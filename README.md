@@ -1,7 +1,8 @@
 # cargo.nvim
 
 ## Installation
-To install with `packer.nvim` (depends on `cargo-make`):
+### `packer.nvim`
+depends on `cargo-make`:
 
 ```lua
 use {
@@ -12,6 +13,11 @@ use {
     end
 }
 ```
+
+### Manually
+
+1. Compile the code with `cargo build --release`
+2. Copy `target/release/libcargo_nvim.so` to your nvim directory `lua/cargo.so`
 
 ## Commands
 - `:Cargo add ...` adds a dependency + reloads workspace (depends on `cargo-edit`)
