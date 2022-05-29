@@ -2,12 +2,9 @@ use std::{
     ffi::OsStr,
     iter,
     process::{Command, Output},
-    time::Duration,
 };
 
-use async_compat::CompatExt;
 use async_process::Command as AsyncCommand;
-
 use clap::{ErrorKind, Parser};
 use mlua::prelude::*;
 use nvim::{
@@ -191,7 +188,6 @@ fn setup(lua: &Lua, _config: Option<LuaTable>) -> LuaResult<()> {
 
 #[mlua::lua_module]
 fn cargo(lua: &Lua) -> LuaResult<LuaTable> {
-    simple_logging::log_to_file("log", log::LevelFilter::Debug).unwrap();
     let exports = lua.create_table()?;
     exports.set("setup", lua.create_function(setup)?)?;
     Ok(exports)

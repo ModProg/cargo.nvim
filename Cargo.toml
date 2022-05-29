@@ -11,7 +11,7 @@ crate-type = ["cdylib"]
 clap = { version = "3.1.18", features = ["derive"] }
 log = "0.4.17"
 once_cell = "1.10.0"
-simple-logging = "2.0.2"
+# simple-logging = "2.0.2"
 async-process = "1.4.0"
 async-compat = "0.2.1"
 async-std = "1.11.0"
