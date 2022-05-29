@@ -1,5 +1,6 @@
 # cargo.nvim
 
+## Installation
 To install with `packer.nvim` (depends on `cargo-make`):
 
 ```lua
@@ -11,3 +12,9 @@ use {
     end
 }
 ```
+
+## Commands
+- `:Cargo add ...` adds a dependency + reloads workspace (depends on `cargo-edit`)
+- `:Cargo rm dep` removes a dependency + reloads workspace (depends on `cargo-edit`)
+- `:Cargo reload` reloads workspace
+- `:Cargo ...` runs any other cargo command in a terminal
