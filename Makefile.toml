@@ -1,0 +1,36 @@
+[tasks.release]
+script = '''
+#!@duckscript
+exec --fail-on-error cargo build --release
+mkdir lua
+cp target/release/libcargo_nvim.so lua/cargo.so
+# # mkdir lua/deps
+# # cp target/release/deps/*.rlib lua/deps
+# is_path_exists = is_path_exists ~/.local/share/nvim/site/pack/packer/start/cargo/lua
+# if ${is_path_exists}
+#     rm -r ~/.local/share/nvim/site/pack/packer/start/cargo/lua
+# end
+# mkdir ~/.local/share/nvim/site/pack/packer/start/cargo
+# cp lua ~/.local/share/nvim/site/pack/packer/start/cargo/
+'''
+[tasks.run]
+dependencies = ["release"]
+script = '''
+#!@duckscript
+if is_path_exists test_proj
+else
+    exec cargo new test_proj --vcs none
+end
+cd test_proj
+exec nvim --cmd "set runtimepath+=.. | lua require'cargo'.setup()" src/main.rs
+'''
+[tasks.rm_test_proj]
+script = '''
+#!@duckscript
+if is_path_exists test_proj
+    rm -r test_proj
+end
+'''
+
+[tasks.clean]
+dependencies = ["rm_test_proj"]
