@@ -18,6 +18,7 @@ use {
 
 1. Compile the code with `cargo build --release`
 2. Copy `target/release/libcargo_nvim.so` to your nvim directory `lua/cargo.so`
+3. Add `require"cargo".setup()` to your nvim initialization (i.e. `init.lua`)
 
 ## Commands
 - `:Cargo add ...` adds a dependency + reloads workspace (depends on `cargo-edit`)
